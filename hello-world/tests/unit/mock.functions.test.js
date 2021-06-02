@@ -13,7 +13,7 @@ function forEach(items, callback) {
   }
 }
 
-describe("Test forEach function", () => {
+describe("Test forEach function with mock callback", () => {
   const mockCallback = jest.fn((x) => 42 + x);
   forEach([0, 1], mockCallback);
 
@@ -33,5 +33,22 @@ describe("Test forEach function", () => {
   test("The return value of the first callback call should be 42", () => {
     // Get the return value of the first call
     expect(mockCallback.mock.results[0].value).toBe(42);
+  });
+});
+
+describe("Test filter function with mock values", () => {
+  const filterMockCallback = jest.fn();
+
+  // Make the mock function return the "true" for the first call, the "false" value for the second call and the "true" value for the others
+  filterMockCallback
+    .mockReturnValueOnce(true)
+    .mockReturnValueOnce(false)
+    .mockReturnValue(true);
+
+  const result = [11, 12, 15].filter((num) => filterMockCallback(num));
+
+  test("The filtration result should be [11, 15]", () => {
+    const expectedResult = [11, 15];
+    expect(result).toEqual(expectedResult);
   });
 });
