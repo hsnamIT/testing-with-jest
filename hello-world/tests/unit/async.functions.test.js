@@ -8,6 +8,8 @@ function timeout(ms) {
       reject("Invalid delay time");
       return;
     }
+    // We can increase the Jest timeout
+    // Ref: https://stackoverflow.com/a/49864436
     if (ms >= 5000) {
       reject("Exceeded the maximum waiting time of Jest");
       return;
