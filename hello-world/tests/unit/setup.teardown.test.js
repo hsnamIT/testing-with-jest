@@ -1,4 +1,5 @@
 "use strict";
+// This file was set to be ignored in the jest.config.js file
 
 // Ref: https://jestjs.io/docs/setup-teardown
 
